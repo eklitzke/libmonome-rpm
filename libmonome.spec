@@ -61,6 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc README
+%{_libdir}/*.so
 %{_libdir}/*.so.*
 %{_libdir}/monome/protocol*
 %{_bindir}/monomeserial
@@ -69,8 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/monome/protocol*
 
 %files python
 %defattr(-,root,root,-)
