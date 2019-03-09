@@ -2,7 +2,7 @@
 
 Name:           libmonome
 Version:        1.4.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        libmonome
 
 License:        As-is
@@ -20,6 +20,16 @@ Requires:       systemd-libs
 %description
 libmonome is a library for controlling the monome
 
+%package        python
+Summary:        Python bindings for libmonome
+Requires:       %{name} = %{version}-%{release}
+Requires:       python3
+BuildRequires:  python3-devel
+BuildRequires:  python3-Cython
+
+%description    python
+Python bindings for libmonome
+
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
@@ -35,7 +45,7 @@ developing applications that use %{name}.
 
 %build
 %set_build_flags
-./waf configure --prefix=%{_prefix} --libdir=%{_libdir}
+./waf configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-python --python=%{__python3}
 ./waf build %{?_smp_mflags}
 
 %install
@@ -57,10 +67,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %files devel
+%defattr(-,root,root,-)
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/monome/protocol*
 
+%files python
+%defattr(-,root,root,-)
+%{python3_sitearch}/monome*
+
 %changelog
+* Sat Mar 09 2019 Evan Klitzke <evan@eklitzke.org> - 1.4.2-2
+- Add python packaging
+
 * Sat Mar  9 2019 Evan Klitzke <evan@eklitzke.org>
 - Initial packaging work
