@@ -1,3 +1,4 @@
-RPM packaging for [libmonome](https://github.com/monome/libmonome) and
-[serialosc](https://github.com/monome/serialosc). Currently missing generated
-Python bindings for `libmonome`.
+RPM packaging for [libmonome](https://github.com/monome/libmonome).
+
+See also [serialosc-rpm](https://github.com/eklitzke/serialosc-rpm/) for
+[serialosc](https://github.com/monome/serialosc) RPM packaging.

@@ -1,5 +1,3 @@
-# TODO: enable building python libs
-
 Name:           libmonome
 Version:        1.4.2
 Release:        2%{?dist}
@@ -33,6 +31,7 @@ Python bindings for libmonome
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       liblo-devel
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
